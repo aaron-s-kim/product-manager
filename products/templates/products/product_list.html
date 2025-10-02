@@ -70,25 +70,38 @@
         <div class="row">
             {% for product in products %}
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-lg">
+
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title text-primary">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description }}</p>
-                        <p class="price">${{ product.price }}</p>
-                        <p><em>{{ product.category.name }}</em> | Qty: {{ product.quantity }}</p>
-                        <div class="tags">
-                            {% for tag in product.tags.all %}
-                                <span class="tag">{{ tag.name }}</span>
-                            {% empty %}
-                                <span style="color: #666;"><em>No tags</em></span>
-                            {% endfor %}
+                        <p class="card-text text-muted flex-grow-1">{{ product.description }}</p>
+                        <div class="mt-auto">
+                            <div class="d-flex justify-content-between mb-4">
+                                <span class="h4 text-success">${{ product.price }}</span>
+                                <small class="text-muted">Qty: {{ product.quantity }}</small>
+                            </div>
+                            <div class="mb-2">
+                                <span class="badge bg-secondary">{{ product.category.name }}</span>
+                            </div>
+                            <div class="tags">
+                                {% for tag in product.tags.all %}
+                                    <span class="badge bg-light text-dark">{{ tag.name }}</span>
+                                {% empty %}
+                                    <small class="text-muted fst-italic">No tags</small>
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
 
             {% empty %}
-                <p>No products found.</p>
+                <div class="col-12">
+                    <div class="alert alert-warning text-center">
+                        <h4 class="alert-heading">No Products Found</h4>
+                    </div>
+                </div>
             {% endfor %}
         </div>
     </div>
