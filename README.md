@@ -19,3 +19,6 @@ sudo apt install libpq-dev
 # Install django & PostgreSQL DB adapter
 pip install django django-environ psycopg2-binary
 ```
+
+3. Environment setup
+Copy `.env.example` to `.env`, update with own values, and generate a new SECRET_KEY
