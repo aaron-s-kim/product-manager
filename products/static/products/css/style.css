@@ -27,6 +27,30 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* Filter Tags */
+.form-check-label {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 15px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.form-check-label:hover {
+  background: #e9ecef;
+}
+
+.form-check-input:checked + .form-check-label {
+  background: #83c4ed;
+  color: white;
+}
+
+.form-check-input {
+  display: none;
+}
+
 /* Product Cards */
 .card {
   border: none;
@@ -41,4 +65,10 @@ body {
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.badge {
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-weight: 500;
 }
