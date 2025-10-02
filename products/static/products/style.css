@@ -4,6 +4,26 @@ body {
   line-height: 1.5;
 }
 
+form {
+  border: 1px solid #000000;
+  background: #d5f4ff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
 .product {
   border: 1px solid #000000;
   padding: 15px;
