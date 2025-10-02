@@ -3,3 +3,35 @@ body {
   margin: 20px;
   line-height: 1.5;
 }
+
+.product {
+  border: 1px solid #000000;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 5px;
+  background: #d5f4ff;
+}
+
+.product h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.price {
+  font-weight: bold;
+  color: #28a745;
+  font-size: 18px;
+}
+
+.tags {
+  margin-top: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background: #3b6d9a;
+  color: rgb(255, 255, 255);
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 12px;
+}

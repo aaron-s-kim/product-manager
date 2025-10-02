@@ -7,5 +7,22 @@
 </head>
 <body>
     <h1>Products</h1>
+    {% for product in products %}
+        <div class="product">
+            <h3>{{ product.name }}</h3>
+            <p>{{ product.description }}</p>
+            <p class="price">${{ product.price }}</p>
+            <p><em>{{ product.category.name }}</em> | Qty: {{ product.quantity }}</p>
+            <div class="tags">
+                {% for tag in product.tags.all %}
+                    <span class="tag">{{ tag.name }}</span>
+                {% empty %}
+                    <span style="color: #666;"><em>No tags</em></span>
+                {% endfor %}
+            </div>
+        </div>
+    {% empty %}
+        <p>No products found.</p>
+    {% endfor %}
 </body>
 </html>
