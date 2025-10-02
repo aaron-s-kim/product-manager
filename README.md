@@ -22,3 +22,16 @@ pip install django django-environ psycopg2-binary
 
 3. Environment setup
 Copy `.env.example` to `.env`, update with own values, and generate a new SECRET_KEY
+
+4. Setup Database
+```sh
+# Make sure PostgreSQL is running, and DB exists
+python manage.py migrate
+```
+
+5. Run server
+```sh
+python manage.py runserver
+```
+Visit `http://localhost:8000/`
+
