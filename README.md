@@ -21,9 +21,11 @@ pip install -r requirements.txt
 ```
 
 3. Environment setup
-Copy `.env.example` to `.env`, update with own values, and generate a new SECRET_KEY
+
+- Copy `.env.example` to `.env`, update with own values, and generate a new SECRET_KEY
 
 4. Setup Database, create & run migrations, then seed
+
 - Make sure PostgreSQL is running, and DB exists
 ```sh
 # Create migrations
@@ -45,7 +47,8 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 Visit: `http://localhost:8000/`
-Visit for admin interface: `http://localhost:8000/admin/`
+
+Visit admin interface: `http://localhost:8000/admin/`
 
 
 ## Additional Commands
