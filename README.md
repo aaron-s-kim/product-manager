@@ -34,11 +34,25 @@ python manage.py migrate
 python manage.py seed_db
 ```
 
-5. Run server
+5. Create Superuser to access admin interface
+```sh
+# Create admin username & password
+python manage.py createsuperuser
+```
+
+6. Run server
 ```sh
 python manage.py runserver
 ```
-Visit `http://localhost:8000/`
+Visit: `http://localhost:8000/`
+Visit for admin interface: `http://localhost:8000/admin/`
+
+
+## Additional Commands
+```sh
+# Run after installing packages to update required packages list
+pip freeze > requirements.txt
+```
 
 ## Additional Notes
 - Use `DEBUG=Flase` in prod
