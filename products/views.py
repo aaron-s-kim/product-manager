@@ -17,7 +17,7 @@ def product_list(request):
     category_filter = request.GET.get("category")
     if category_filter:
         products = products.filter(category_id=category_filter)
-    
+
     tag_filters = request.GET.getlist("tags")
     if tag_filters:
         products = products.filter(tags__in=tag_filters).distinct()

@@ -16,17 +16,22 @@ source .venv/bin/activate
 ```sh
 # Install prerequisites for postgresql
 sudo apt install libpq-dev
-# Install django & PostgreSQL DB adapter
-pip install django django-environ psycopg2-binary
+# Install packages into virtual env
+pip install -r requirements.txt
 ```
 
 3. Environment setup
 Copy `.env.example` to `.env`, update with own values, and generate a new SECRET_KEY
 
-4. Setup Database
+4. Setup Database, create & run migrations, then seed
+- Make sure PostgreSQL is running, and DB exists
 ```sh
-# Make sure PostgreSQL is running, and DB exists
+# Create migrations
+python manage.py makemigrations
+# Apply migrations  
 python manage.py migrate
+# Seed database
+python manage.py seed_db
 ```
 
 5. Run server
@@ -35,3 +40,6 @@ python manage.py runserver
 ```
 Visit `http://localhost:8000/`
 
+## Additional Notes
+- Use `DEBUG=Flase` in prod
+- Generate a unique SECRET_KEY for prod
