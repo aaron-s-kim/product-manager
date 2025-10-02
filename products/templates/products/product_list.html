@@ -20,6 +20,16 @@
             </select>
             <button type="submit">Search</button>
         </p>
+        <p>
+            <strong>Tags:</strong>
+            {% for tag in tags %}
+                <label>
+                    <input type="checkbox" name="tags" value="{{ tag.id }}"
+                           {% if tag.id in selected_tags %}checked{% endif %}>
+                    {{ tag.name }}
+                </label>
+            {% endfor %}
+        </p>
     </form>
 
     <hr>

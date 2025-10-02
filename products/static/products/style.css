@@ -9,13 +9,23 @@ form {
   background: #d5f4ff;
   padding: 15px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
+
+form p {
+  margin: 10px 0;
+}
+
+form label {
+  margin-right: 14px;
+  font-size: 14px;
+}
+
 
 input,
 select,
 button {
   padding: 5px;
-  margin-right: 10px;
 }
 
 button {
