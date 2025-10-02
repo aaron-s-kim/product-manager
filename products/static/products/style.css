@@ -11,6 +11,13 @@ form {
   border-radius: 5px;
 }
 
+input,
+select,
+button {
+  padding: 5px;
+  margin-right: 10px;
+}
+
 button {
   background: #007bff;
   color: white;
