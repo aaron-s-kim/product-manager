@@ -3,66 +3,84 @@
 {% block title %}Product Search{% endblock %}
 
 {% block content %}
-<h1>Products</h1>
+<div class="row">
+    <div class="col-12">
+        <h1 class="display-4 mb-4 text-primary fw-bold">Products</h1>
 
-    <div class="card-body">
-        <form method="get">
-            <div class="row g-3 mb-3">
-                <div class="col-md-6">
-                    <label for="search" class="form-label">Search Products</label>
-                    <input type="text" class="form-control" id="search" name="search" 
-                        value="{{ search_query }}" placeholder="Enter product name or description...">
-                </div>
-                <div class="col-md-4">
-                    <label for="category" class="form-label">Category</label>
-                    <select name="category" id="category" class="form-select">
-                        <option value="">All Categories</option>
-                        {% for cat in categories %}
-                            <option value="{{ cat.id }}" {% if cat.id|stringformat:"s" == selected_category %}selected{% endif %}>
-                                {{ cat.name }}
-                            </option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="col-md-2 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="bi bi-search"></i> Search
-                    </button>
-                </div>
+        <div class="card mb-4">
+            <div class="card-header bg-light">
+                <h5 class="card-title">Search & Filter Products</h5>
             </div>
-
-            <p>
-                <strong>Tags:</strong>
-                {% for tag in tags %}
-                    <label>
-                        <input type="checkbox" name="tags" value="{{ tag.id }}"
-                               {% if tag.id in selected_tags %}checked{% endif %}>
-                        {{ tag.name }}
-                    </label>
-                {% endfor %}
-            </p>
-        </form>
-    </div>
-
-    <hr>
-
-    <p><strong>{{ products.count }} products found</strong></p>
-
-    {% for product in products %}
-        <div class="product">
-            <h3>{{ product.name }}</h3>
-            <p>{{ product.description }}</p>
-            <p class="price">${{ product.price }}</p>
-            <p><em>{{ product.category.name }}</em> | Qty: {{ product.quantity }}</p>
-            <div class="tags">
-                {% for tag in product.tags.all %}
-                    <span class="tag">{{ tag.name }}</span>
-                {% empty %}
-                    <span style="color: #666;"><em>No tags</em></span>
-                {% endfor %}
+            <div class="card-body">
+                <form method="get">
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="search" class="form-label">Search Products</label>
+                            <input type="text" class="form-control" id="search" name="search" 
+                                value="{{ search_query }}" placeholder="Enter product name or description...">
+                        </div>
+                        <div class="col-md-4">
+                            <label for="category" class="form-label">Category</label>
+                            <select name="category" id="category" class="form-select">
+                                <option value="">All Categories</option>
+                                {% for cat in categories %}
+                                    <option value="{{ cat.id }}" {% if cat.id|stringformat:"s" == selected_category %}selected{% endif %}>
+                                        {{ cat.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-2 d-flex align-items-end">
+                            <button type="submit" class="btn btn-primary w-100">Search</button>
+                        </div>
+                    </div>
+        
+                    {% if tags %}
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="form-label fw-bold">Filter by Tags:</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    {% for tag in tags %}
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="tags" 
+                                                    value="{{ tag.id }}" id="tag_{{ tag.id }}"
+                                                    {% if tag.id in selected_tags %}checked{% endif %}>
+                                            <label class="form-check-label" for="tag_{{ tag.id }}">
+                                                {{ tag.name }}
+                                            </label>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </form>
             </div>
         </div>
-    {% empty %}
-        <p>No products found.</p>
-    {% endfor %}
+
+    
+        <hr>
+    
+        <p><strong>{{ products.count }} products found</strong></p>
+    
+        {% for product in products %}
+            <div class="product">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.description }}</p>
+                <p class="price">${{ product.price }}</p>
+                <p><em>{{ product.category.name }}</em> | Qty: {{ product.quantity }}</p>
+                <div class="tags">
+                    {% for tag in product.tags.all %}
+                        <span class="tag">{{ tag.name }}</span>
+                    {% empty %}
+                        <span style="color: #666;"><em>No tags</em></span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% empty %}
+            <p>No products found.</p>
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock %}
