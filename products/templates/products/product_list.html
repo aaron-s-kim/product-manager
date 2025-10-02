@@ -7,6 +7,7 @@
     <div class="col-12">
         <h1 class="display-4 mb-4 text-primary fw-bold">Products</h1>
 
+        <!-- Search and Filter Form -->
         <div class="card mb-4">
             <div class="card-header bg-light">
                 <h5 class="card-title">Search & Filter Products</h5>
@@ -58,11 +59,14 @@
             </div>
         </div>
 
+        <!-- Results Summary -->
+        <div class="d-flex align-items-center mb-3">
+            <div class="alert alert-info py-2">
+                <strong>{{ products.count }}</strong> product{{ products.count|pluralize }} found
+            </div>
+        </div>
     
-        <hr>
-    
-        <p><strong>{{ products.count }} products found</strong></p>
-    
+        <!-- Products Grid -->
         {% for product in products %}
             <div class="product">
                 <h3>{{ product.name }}</h3>
